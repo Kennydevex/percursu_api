@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Percursu'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://104.238.165.7'),
 
     'asset_url' => env('ASSET_URL', null),
 
@@ -162,6 +162,11 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        //  Installed
+        Intervention\Image\ImageServiceProvider::class,
+
+
+
         /*
          * Package Service Providers...
          */
@@ -225,6 +230,54 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Image' => Intervention\Image\Facades\Image::class,
+
+
+        // Personal Aliases
+        // Modelos do sistema
+        'User' => App\Models\System\User::class,
+        'Role' => App\Models\System\Role::class,
+        'Permission' => App\Models\System\Permission::class,
+
+        'Tag' => App\Models\CMS\Tag::class,
+        'Post' => App\Models\CMS\Post::class,
+
+        'Address' => App\Models\Helpers\Address::class,
+        'Category' => App\Models\Helpers\Category::class,
+        'Courier' => App\Models\Helpers\Courier::class,
+        'Entity' => App\Models\Helpers\Entity::class,
+        'Folk' => App\Models\Helpers\Folk::class,
+        'Location' => App\Models\Helpers\Location::class,
+        'Phone' => App\Models\Helpers\Phone::class,
+        'Site' => App\Models\Helpers\Site::class,
+        'Social' => App\Models\Helpers\Social::class,
+
+        'Charge' => App\Models\Percursu\Charge::class,
+        'Experience' => App\Models\Percursu\Experience::class,
+        'Formation' => App\Models\Percursu\Formation::class,
+        'Media' => App\Models\Percursu\Media::class,
+        'Partner' => App\Models\Percursu\Partner::class,
+        'Skill' => App\Models\Percursu\Skill::class,
+        'Company' => App\Models\Percursu\Company::class,
+
+
+        'ChargeCollection' => App\Http\Resources\Percursu\ChargeCollection::class,
+        'ChargeResource' => Percursu\Http\Resources\Percursu\Charge::class,
+        'PartnerCollection' => App\Http\Resources\Percursu\PartnerCollection::class,
+        'PartnerResource' => Percursu\Http\Resources\Percursu\Partner::class,
+        'UserCollection' => App\Http\Resources\System\UserCollection::class,
+        'UserResource' => App\Http\Resources\System\User::class,
+
+        'CategoryCollection' => App\Http\Resources\Helpers\CategoryCollection::class,
+        'CategoryResource' => App\Http\Resources\Helpers\Category::class,
+
+        'TagCollection' => App\Http\Resources\CMS\TagCollection::class,
+        'TagResource' => App\Http\Resources\CMS\Tag::class,
+
+
+
+        //Helpers
+        'Common' => App\Helpers\Common::class,
 
     ],
 
