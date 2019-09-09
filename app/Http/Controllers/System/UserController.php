@@ -28,11 +28,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        // $users = User::all();
-        // $users->each(function ($users) {
-        //     $users->folk;
-        // });
-        // return new UserCollection($users);
+        $users = User::all();
+        $users->each(function ($users) {
+            $users->folk;
+            $users->roles;
+            $users->permissions;
+        });
+        return new UserCollection($users);
     }
 
 
