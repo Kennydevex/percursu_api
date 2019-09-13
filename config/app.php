@@ -262,9 +262,9 @@ return [
 
 
         'ChargeCollection' => App\Http\Resources\Percursu\ChargeCollection::class,
-        'ChargeResource' => Percursu\Http\Resources\Percursu\Charge::class,
+        'ChargeResource' => App\Http\Resources\Percursu\Charge::class,
         'PartnerCollection' => App\Http\Resources\Percursu\PartnerCollection::class,
-        'PartnerResource' => Percursu\Http\Resources\Percursu\Partner::class,
+        'PartnerResource' => App\Http\Resources\Percursu\Partner::class,
         'UserCollection' => App\Http\Resources\System\UserCollection::class,
         'UserResource' => App\Http\Resources\System\User::class,
 

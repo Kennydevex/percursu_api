@@ -30,24 +30,6 @@ class ChargeController extends Controller
      */
     public function store(ChargeRequest $request)
     {
-        //    $validator = Validator::make($request->all(), [
-        //        'name' => 'required|unique:charges',
-        //        'description' => 'nullable',
-        //    ]);
-
-        //    if ($validator->fails()) {
-        //         return response()->json([
-        //         'error' => $validator->messages()->first(),
-        //         ], 422);
-        //    }
-
-        // $data = $this->validate($request, [
-        //     'name' => 'required|unique:charges',
-        //     'description' => 'nullable',
-        // ]);
-        // $charge = Charge::create($data);
-
-
         $charge = Charge::create(
             [
                 'name' => $request->name,

@@ -36,7 +36,7 @@ class AuthController extends Controller
             'folk_id' => $folk->id,
         ]);
 
-        
+
         //Relacionamento
         // $user->syncRoles($request->roles);
         // $user->syncPermissions($request->permissions);
@@ -57,11 +57,13 @@ class AuthController extends Controller
         // $user = User::whereEmail($request->email)->with('folk')->with('permissions')->first();
         $user = User::whereEmail($request->email)->first();
 
-        $user->load(
-            'folk.partner',
-            'permissions',
-            'roles'
-        );
+        if ($user) {
+            $user->load(
+                'folk.partner',
+                'permissions',
+                'roles'
+            );
+        }
 
         if (!$user)
             return response()->Json(['error' => 'Conta não se encontra registada'], 401);

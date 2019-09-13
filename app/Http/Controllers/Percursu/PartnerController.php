@@ -1,8 +1,8 @@
 <?php
 
-namespace Percursu\Http\Controllers\Percursu;
+namespace App\Http\Controllers\Percursu;
 
-use Percursu\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use UserResource;
 use Partner;
 use User;
@@ -21,8 +21,8 @@ use Folk;
 use Common;
 use PartnerCollection;
 use PartnerResource;
-use Percursu\Http\Requests\Helpers\FolkRequest;
-use Percursu\Http\Requests\Percursu\PartnerRequest;
+use App\Http\Requests\Helpers\FolkRequest;
+use App\Http\Requests\Percursu\PartnerRequest;
 
 
 class PartnerController extends Controller
