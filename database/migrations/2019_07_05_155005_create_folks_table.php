@@ -19,7 +19,7 @@ class CreateFolksTable extends Migration
             $table->string('lastname', 100);
             $table->enum('gender', ['m', 'f', 'nd'])->nullable();
             $table->string('avatar', 100)->nullable()->default('default.svg');
-            $table->string('cover', 100)->nullable()->default('default.svg');
+            $table->string('cover', 100)->nullable()->default('default.gif');
             $table->string('ic', 50)->nullable()->unique();
             $table->string('nif', 50)->nullable()->unique();
             $table->date('birthdate')->nullable();
