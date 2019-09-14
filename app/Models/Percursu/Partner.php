@@ -51,5 +51,21 @@ class Partner extends Model
         return false;
     }
 
+    public function getFeaturedAttribute($value)
+    {
+        if ($value) {
+            return true;
+        }
+        return false;
+    }
+
+    public function getPromoAttribute($value)
+    {
+        if ($value) {
+            return true;
+        }
+        return false;
+    }
+
   
 }

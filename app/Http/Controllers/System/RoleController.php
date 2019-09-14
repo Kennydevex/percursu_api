@@ -11,13 +11,14 @@ use App\Http\Requests\System\RoleRequest;
 
 
 use Spatie\Permission\Models\Role;
-// use Spatie\Permission\Models\Permission;
-
-// $permission = Permission::create(['name' => 'edit articles']);
-
 
 class RoleController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('jwt.auth');
+    }
     /**
      * Display a listing of the resource.
      *

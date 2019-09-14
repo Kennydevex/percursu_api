@@ -14,13 +14,10 @@ use App\Http\Requests\System\UserRequest;
 class UserController extends Controller
 {
 
-    // public function __construct()
-    // {
-    //     // $this->middleware('jwt.auth', ['except' => ['activedPartners', 'show']]);
-    //     $this->middleware('jwt.auth');
-
-    //     $this->middleware(['role:super-admin|admin']);
-    // }
+    public function __construct()
+    {
+        $this->middleware('jwt.auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -93,8 +90,8 @@ class UserController extends Controller
      */
     public function update(Request $request, $username)
     {
-        $userData = User::whereUsername($username)->firstOrFail();
-        $folk = Folk::findOrfail($userData->folk->id);
+        $user = User::whereUsername($username)->firstOrFail();
+        $folk = Folk::findOrfail($user->folk->id);
         $folk->update([
             'name' => $request->input('folk.name'),
             'lastname' => $request->input('folk.lastname'),
@@ -104,11 +101,16 @@ class UserController extends Controller
             'nif' => $request->input('folk.nif'),
             'birthdate' => $request->input('folk.birthdate'),
         ]);
-        $userData->update([
+        $user->update([
             'email' => $request->email,
             'username' => $request->username,
             'status' => $request->status,
         ]);
+
+
+
+        $user->syncPermissions($request->permissions);
+        $user->syncRoles($request->roles);
 
         return response()->json([
             'msg' => 'Dados do utilizador atualizado com sucesso!',

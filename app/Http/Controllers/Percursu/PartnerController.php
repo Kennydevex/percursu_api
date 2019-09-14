@@ -30,7 +30,7 @@ class PartnerController extends Controller
 
     public function __construct()
     {
-        $this->middleware('jwt.auth', ['except' => ['activedPartners', 'show']]);
+        $this->middleware('jwt.auth', ['except' => ['activedPartners', 'show', 'featuredPartners']]);
     }
 
     /**
@@ -73,7 +73,7 @@ class PartnerController extends Controller
                 'lastname' => $request->input('folk.lastname'),
                 'gender' => $request->input('folk.gender'),
                 'avatar' => $request->input('folk.avatar') ? Common::storeLocalFile($request->input('folk.avatar'), 'images/folks/avatar/') : 'default.svg',
-                'cover' => $request->input('folk.cover') ? Common::storeLocalFile($request->input('folk.cover'), 'images/folks/avatar/') : 'default.svg',
+                'cover' => $request->input('folk.cover') ? Common::storeLocalFile($request->input('folk.cover'), 'images/folks/cover/') : 'default.gif',
                 'ic' => $request->input('folk.ic'),
                 'nif' => $request->input('folk.nif'),
                 'birthdate' => $request->input('folk.birthdate'),
@@ -801,6 +801,25 @@ class PartnerController extends Controller
     public function activedPartners()
     {
         $partners = Partner::whereStatus(true)->orderBy('created_at', 'desc')->get();
+        $partners->each(function ($partner) {
+            $partner->load(
+                'folk.user',
+                'folk.phones',
+                'folk.couriers',
+                'folk.address.location',
+                'skills',
+                'formations',
+                'experiences',
+                'sites',
+                'socials'
+            );
+        });
+        return new PartnerCollection($partners);
+    }
+
+    public function featuredPartners()
+    {
+        $partners = Partner::whereStatus(true)->whereFeatured(true)->orderBy('created_at', 'desc')->get();
         $partners->each(function ($partner) {
             $partner->load(
                 'folk.user',
