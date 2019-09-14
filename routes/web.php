@@ -13,7 +13,7 @@ Route::prefix('api')->group(function () {
         });
 
         Route::group(['middleware' => 'jwt.auth'], function () {
-            Route::group(['namespace' => 'System', 'middleware' => ['role:super-admin|admin|create user|edit user']], function ($router) {
+            Route::group(['namespace' => 'System', 'middleware' => ['role:supr-admin|admin|create user|edit user']], function ($router) {
                 Route::resource('users', 'UserController');
                 Route::get('usersWithoutPartner', 'UserController@usersWithoutPartner');
                 Route::get('changeUserActivation/{id}', 'UserController@changeUserActivation');
@@ -32,6 +32,8 @@ Route::prefix('api')->group(function () {
                     Route::get('changePartnerFeatured/{id}', 'PartnerController@changePartnerFeatured');
                     Route::get('changePartnerPromotion/{id}', 'PartnerController@changePartnerPromotion');
                 });
+                Route::resource('charges', 'ChargeController');
+
             });
             Route::get('partner', 'PartnerController@show');
             Route::get('activedPartners', 'PartnerController@activedPartners');
