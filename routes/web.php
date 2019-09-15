@@ -35,7 +35,7 @@ Route::prefix('api')->group(function () {
                 Route::resource('charges', 'ChargeController');
 
             });
-            Route::get('partner', 'PartnerController@show');
+            Route::get('partner/{username}', 'PartnerController@show');
             Route::get('activedPartners', 'PartnerController@activedPartners');
             Route::get('featuredPartners', 'PartnerController@featuredPartners');
         });

@@ -28,10 +28,10 @@ use App\Http\Requests\Percursu\PartnerRequest;
 class PartnerController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('jwt.auth', ['except' => ['activedPartners', 'show', 'featuredPartners']]);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('jwt.auth', ['except' => ['activedPartners', 'show', 'featuredPartners']]);
+    // }
 
     /**
      * Display a listing of the resource.
